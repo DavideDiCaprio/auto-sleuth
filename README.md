@@ -1,2 +1,12 @@
-# auto-sleuth
-A hybrid AI-powered car cost estimator. Built with FastAPI, LangGraph, and Python. Calculates TCO (Total Cost of Ownership) using deterministic math + probabilistic AI agents.
+# AutoSleuth 🕵️‍♂️🚗
+
+> **Know the real cost of your next car.**
+> AutoSleuth combines standard mathematical modeling (fuel, tax, insurance) with AI Agents to uncover hidden risks, depreciation trends, and maintenance shocks.
+
+## 🏗 Architecture
+
+## 🚀 Tech Stack
+* **Core:** Python 3.12, FastAPI
+* **AI/Agents:** 
+* **Data Validation:** 
+* **Database:** 

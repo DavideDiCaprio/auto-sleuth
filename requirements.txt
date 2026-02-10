@@ -1,0 +1,15 @@
+fastapi
+uvicorn
+requests
+
+python-dotenv
+pytest
+httpx
+sqlalchemy
+google-generativeai
+
+
+langgraph
+langchain
+langchain-google-genai
+langchain-community
