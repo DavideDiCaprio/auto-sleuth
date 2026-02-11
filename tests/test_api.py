@@ -2,7 +2,7 @@
 import pytest
 from unittest.mock import patch, MagicMock
 from app.services.geolocation import GeolocationError
-from app.services.gas_price import GasPriceError
+from app.services.fuel import FuelPriceError
 
 def test_health_check(client):
     response = client.get("/health")
