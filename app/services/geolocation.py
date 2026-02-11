@@ -1,10 +1,20 @@
-import requests
+import httpx
+from fastapi import Request
 from typing import Dict, Protocol, Optional, Any
 
 class GeolocationError(Exception):
     pass
 
-def get_user_location(ip_address: str) -> Dict[str, str]:
+def get_client_ip(request: Request) -> str:
+    """
+    Extracts the client's IP address from the request headers or fallback.
+    """
+    forwarded_for = request.headers.get("X-Forwarded-For")
+    if forwarded_for:
+        return forwarded_for.split(",")[0].strip()
+    return request.client.host
+
+async def get_user_location(ip_address: str) -> Dict[str, str]:
     """
     Get the user's location in ITALIAN based on IP.
     """
@@ -14,7 +24,9 @@ def get_user_location(ip_address: str) -> Dict[str, str]:
         target = f"{base_url}{ip_address}" if ip_address and ip_address != "127.0.0.1" else base_url
         
         # Pass lang='it' as a query parameter
-        response = requests.get(target, params={"lang": "it"}, timeout=5)
+        async with httpx.AsyncClient() as client:
+            response = await client.get(target, params={"lang": "it"}, timeout=5.0)
+            
         response.raise_for_status()
         data = response.json()
         
@@ -24,7 +36,7 @@ def get_user_location(ip_address: str) -> Dict[str, str]:
         return {
             "city": data.get("city", "Sconosciuto"),
             "region": data.get("region", ""),         # e.g., 'LZ'
-            "regionName": data.get("regionName", ""), # e.g., 'Lazio' (Now in Italian!)
+            "regionName": data.get("regionName", ""), # e.g., 'Lazio'
             "country": data.get("country", ""),       # e.g., 'Italia'
             "countryCode": data.get("countryCode", ""), # e.g., 'IT'
             "lat": str(data.get("lat", "0")),
