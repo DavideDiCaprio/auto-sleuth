@@ -146,21 +146,46 @@ footer {
     font-size: 1.1rem;
 }
 
-.gas-prices-display {
+.prices-container {
     display: flex;
-    justify-content: space-around;
+    gap: 1.5rem;
+    justify-content: center;
     flex-wrap: wrap;
-    gap: 1rem;
-    align-items: center;
+    width: 100%;
 }
 
-.price-label {
-    width: 100%;
+.price-column {
+    flex: 1;
+    min-width: 220px;
+    background-color: #fff;
+    padding: 1rem;
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.price-column h4 {
+    margin: 0 0 0.5rem 0;
+    color: var(--primary-color);
+    font-size: 1.1rem;
     text-align: center;
-    font-size: 0.9rem;
-    color: var(--secondary-color);
-    margin-bottom: 0.5rem;
-    font-weight: 500;
+    width: 100%;
+    border-bottom: 2px solid #f1f3f5;
+    padding-bottom: 0.5rem;
+}
+
+/* Remove old gas-prices-display if needed, or keep for fallback? 
+   We replaced the HTML ID gas-prices innerHTML, so the container ID is gas-prices.
+   Wait, HTML is: <div id="gas-prices" class="gas-prices-display"></div>
+*/
+
+.gas-prices-display {
+    /* Keep this as a wrapper or just simple block now? */
+    display: block;
+    width: 100%;
 }
 
 .fuel-item {
@@ -201,4 +226,84 @@ footer {
     color: #dc3545;
     font-weight: 500;
     margin: 1rem 0;
+}
+/* Car Result Styles */
+.car-result-card {
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    text-align: left;
+}
+
+.car-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid #f1f3f5;
+    padding-bottom: 1rem;
+}
+
+.car-title h3 {
+    margin: 0;
+    font-size: 1.8rem;
+    color: var(--primary-color);
+    font-family: var(--heading-font-family);
+}
+
+.car-subtitle {
+    font-size: 1.1rem;
+    color: var(--secondary-color);
+    margin-top: 0.25rem;
+}
+
+.source-badge {
+    font-size: 0.8rem;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    background-color: #e9ecef;
+    color: var(--secondary-color);
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.source-badge.agent {
+    background-color: #e3f2fd;
+    color: #0d6efd;
+}
+
+.source-badge.database {
+    background-color: #d1e7dd;
+    color: #0f5132;
+}
+
+.specs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 1.5rem;
+}
+
+.spec-item {
+    background-color: #f8f9fa;
+    padding: 1rem;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+}
+
+.spec-label {
+    font-size: 0.85rem;
+    color: var(--secondary-color);
+    margin-bottom: 0.25rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.spec-value {
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: var(--text-color);
 }
