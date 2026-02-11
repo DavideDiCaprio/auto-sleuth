@@ -6,10 +6,5 @@ python-dotenv
 pytest
 httpx
 sqlalchemy
-google-generativeai
-
-
-langgraph
-langchain
-langchain-google-genai
-langchain-community
+pydantic-ai[google]
+tenacity
